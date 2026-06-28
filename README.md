@@ -2,7 +2,7 @@
 Over-simplified Turing complete virtual machine written in C.
 ## Compile the VM and run
 ```
-gcc vm.c -o vm # Probably won't compile on windows.
+gcc vm.c -o vm.out # Probably won't compile on windows.
 ```
 Assemble the hello world program
 ```
@@ -10,7 +10,7 @@ python asmtrvm.py helloWorld.trs helloWorld.trvm
 ```
 Run the hello world program
 ```
-./vm helloWorld.trvm
+./vm.out helloWorld.trvm
 ```
 ## Details
 **17 general purpose registers**: r1, r3, r4 etc. Yes you can create more by changing the program easily.
@@ -61,6 +61,16 @@ movbr.r1.0 // setup print character
 movbr.r2.10 // newline
 int // print the character
 ```
+Output
+```
+➜  trvm-v1 git:(main) ./asmtrvm.py helloWorld.trs helloWorld.trvm
+➜  trvm-v1 git:(main) ./vm.out helloWorld.trvm
+STARTING TRVM
+hello world
+HALTING TRVM
+➜  trvm-v1 git:(main)
+```
+
 Yes you need to type in base 10 no base 16 support.
 
 Strings are little endian while everything else is in big endian (It's a feature not a bug! XD)
