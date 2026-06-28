@@ -61,10 +61,10 @@ def parse(file):
         tokens = line.split(".")
         for token in tokens:
             opc = opcodes.get(token)
-            if opc != None:
+            if opc is not None:
                 byteCode += opc
                 count += 1
-            elif opc == None and token.isdigit():
+            elif opc is not None and token.isdigit():
                 num = int(token)
                 byteCode += num.to_bytes(8, byteorder="big")
                 count += len(num.to_bytes(8, byteorder="big"))
