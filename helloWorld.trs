@@ -1,0 +1,13 @@
+movbr.r2.6581362
+movbr.r1.8031924123371070824
+movbr.r3.1
+store.r1.r3
+dec.r3
+store.r2.r3
+movbr.r1.5
+movbr.r2.1
+movbr.r3.11
+int
+movbr.r1.0
+movbr.r2.10
+int
