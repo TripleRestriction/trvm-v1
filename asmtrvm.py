@@ -1,5 +1,6 @@
 #!/bin/env python
 import sys
+
 opcodes = {
     "pad": b"\x99",
     "r1": b"\x01",
@@ -47,16 +48,17 @@ opcodes = {
     "jl": b"\x09",
     "jg": b"\xde",
     "hostcall": b"\x69",
-    "int": b"\x70"
+    "int": b"\x70",
 }
+
 
 def parse(file):
     byteCode = b""
     program = file.read()
-    lines = program.split('\n')
+    lines = program.split("\n")
     for line in lines:
         count = 0
-        tokens = line.split('.')
+        tokens = line.split(".")
         for token in tokens:
             opc = opcodes.get(token)
             if opc != None:
@@ -64,14 +66,19 @@ def parse(file):
                 count += 1
             elif opc == None and token.isdigit():
                 num = int(token)
-                byteCode += num.to_bytes(8, byteorder='big')
-                count += len(num.to_bytes(8, byteorder='big'))
+                byteCode += num.to_bytes(8, byteorder="big")
+                count += len(num.to_bytes(8, byteorder="big"))
             else:
-                print("invalid token " + token)
-                sys.exit(1)
+                if token == "\n" or token == "\00" or token == "" or token == " ":
+                    continue
+                else:
+                    print("invalid token " + token)
+                    print(token.encode())
+                    sys.exit(1)
         if count != 10:
-            byteCode += b'\x99' * (10 - count)
+            byteCode += b"\x99" * (10 - count)
     return byteCode
+
 
 if len(sys.argv) < 3:
     print("Usage: asmtrvm.py <input-file> <output-file>")
