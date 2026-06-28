@@ -95,3 +95,40 @@ ABCDEFGHIJKLMNOPQRSTUVWXYZ
 HALTING TRVM
 ➜  trvm-v1 git:(main) ✗
 ```
+
+### star pattern thing
+```
+movbr.r3.1
+movbr.r5.42
+movbr.r6.10
+movbr.r1.0
+movbr.r4.1
+movrr.r7.r3
+inc.r7
+movbr.r2.42
+int
+inc.r4
+cmprr.r4.r7
+jl.pad.7
+movbr.r2.10
+int
+inc.r3
+cmpbr.r3.8
+jl.pad.4
+halt
+```
+Output
+```
+➜  trvm-v1 git:(main) ✗ ./asmtrvm.py stars.trs stars.trvm
+➜  trvm-v1 git:(main) ✗ ./vm.out stars.trvm
+STARTING TRVM
+*
+**
+***
+****
+*****
+******
+*******
+HALTING TRVM
+➜  trvm-v1 git:(main) ✗
+```
