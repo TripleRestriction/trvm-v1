@@ -45,7 +45,7 @@ int: Call built in functions for printing a register, char input, string input e
 ## Program showcase
 hello world
 
-**NOTE: The assembler does not support comments! Just for demonstration! Get the clean files from the repo. **
+**NOTE: The assembler does not support comments! Just for demonstration! Get the clean files from the repo.**
 ```
 movbr.r2.6581362 // dlr
 movbr.r1.8031924123371070824 // ow olleh
