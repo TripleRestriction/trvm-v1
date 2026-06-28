@@ -43,7 +43,7 @@ hostcall: Call linux syscalls.
 int: Call built in functions for printing a register, char input, string input etc.
 
 ## Program showcase
-hello world
+### hello world
 
 **NOTE: The assembler does not support comments! Just for demonstration! Get the clean files from the repo.**
 ```
@@ -70,7 +70,28 @@ hello world
 HALTING TRVM
 ➜  trvm-v1 git:(main)
 ```
-
 Yes you need to type in base 10 no base 16 support.
 
 Strings are little endian while everything else is in big endian (It's a feature not a bug! XD)
+
+### printing alphabets using loop
+```
+movbr.r2.65 // 65 = A (ASCII) // line 0
+movbr.r1.0 // line 1
+int // print char
+inc.r2 // increment r2
+cmpbr.r2.91 // 90 = Z; compare r2 register with 91
+jl.pad.1 // jump if less to line 1
+movbr.r2.10 // 10 = newline (ASCII)
+movbr.r1.0
+int // print newline character
+```
+Output
+```
+➜  trvm-v1 git:(main) ✗ ./asmtrvm.py abcd.trs abcd.trvm
+➜  trvm-v1 git:(main) ✗ ./vm.out abcd.trvm
+STARTING TRVM
+ABCDEFGHIJKLMNOPQRSTUVWXYZ
+HALTING TRVM
+➜  trvm-v1 git:(main) ✗
+```
