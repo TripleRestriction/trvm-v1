@@ -64,7 +64,7 @@ def parse(file):
             if opc is not None:
                 byteCode += opc
                 count += 1
-            elif opc is not None and token.isdigit():
+            elif opc is None and token.isdigit():
                 num = int(token)
                 byteCode += num.to_bytes(8, byteorder="big")
                 count += len(num.to_bytes(8, byteorder="big"))
